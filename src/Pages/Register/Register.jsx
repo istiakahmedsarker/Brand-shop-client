@@ -1,20 +1,21 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
+import { useContext } from 'react';
 import { Toaster,toast } from 'react-hot-toast';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
+    // const { googleSignIn } = useContext(AuthContext);
 
-    const { googleSignIn } = useContext(AuthContext);
 
     const handleGoogle = () => {
-        googleSignIn()
-            .then((response) => {
-                console.log(response.user);
-                toast.success("Successfully Signed up");
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        // googleSignIn()
+        //     .then((response) => {
+        //         console.log(response.user);
+        //         toast.success("Successfully Signed up");
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        //     });
+        console.log('btn clicked')
     };
 
     return (
