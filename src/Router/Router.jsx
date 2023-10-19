@@ -16,10 +16,15 @@ const Router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
+                loader: ()=> fetch('/data.json')
             },
             {
                 path: "/addProduct",
                 element: <AddProduct></AddProduct>,
+            },
+            {
+                path: "/updateProduct",
+                element: <updateProduct></updateProduct>
             },
             {
                 path: "/register",

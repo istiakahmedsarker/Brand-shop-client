@@ -1,4 +1,6 @@
-const AddProduct = () => {
+
+
+const updateProduct = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -13,26 +15,13 @@ const AddProduct = () => {
 
         const addProductDetails = { name, brandName, type, img, price, shortDescription, rating }
 
-        fetch("http://localhost:5000/addProduct", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(addProductDetails),
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                console.log(result);
-            });
-
     };
-
     return (
         <div>
             <form onSubmit={handleSubmit} action="">
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Product Name</span>
+                        <span className="label-text">Name</span>
                     </label>
                     <input type="text" name="name" placeholder="Product Name" className="input input-bordered" required />
                 </div>
@@ -86,4 +75,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default updateProduct;

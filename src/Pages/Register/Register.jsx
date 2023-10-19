@@ -7,14 +7,14 @@ const Register = () => {
 
 
     const handleGoogle = () => {
-        // googleSignIn()
-        //     .then((response) => {
-        //         console.log(response.user);
-        //         toast.success("Successfully Signed up");
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        //     });
+        googleSignIn()
+            .then((response) => {
+                console.log(response.user);
+                toast.success("Successfully Signed up");
+            })
+            .catch((error) => {
+                console.error(error);
+            });
         console.log('btn clicked')
     };
 
