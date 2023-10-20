@@ -7,7 +7,7 @@ const IndividualBrands = () => {
     // console.log(brandName)
 
     // Use the filter method to find the data object that matches the brandName
-    const individualBrandData = data.filter(item => item.brandName.toLowerCase() === brandName.toLowerCase());
+    const individualBrandData = data.filter(item => item.brandName?.toLowerCase() === brandName.toLowerCase());
     return (
         <div className="">
             <div className="">
