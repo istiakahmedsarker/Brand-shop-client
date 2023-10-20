@@ -7,6 +7,8 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import Register from "../Pages/Register/Register";
 import IndividualBrands from "../Components/IndividualBrands/IndividualBrands"; // Make sure it's imported correctly
+import ProductDetails from "../Components/ProductDetails/ProductDetails";
+import Login from "../Pages/Login/Login";
 
 const Router = createBrowserRouter([
     {
@@ -33,8 +35,16 @@ const Router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/allProducts')
             },
             {
+                path: "/productDetails/:id",
+                element: <ProductDetails></ProductDetails>,
+            },
+            {
                 path: "/register",
                 element: <Register></Register>,
+            },
+            {
+                path: "/login",
+                element: <Login></Login>,
             }
         ]
     },

@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 const AddProduct = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -11,7 +12,7 @@ const AddProduct = () => {
         const shortDescription = form.elements.shortDescription.value;
         const rating = form.elements.rating.value;
 
-        const addProductDetails = { name, brandName, type, img, price, shortDescription, rating }
+        const addProductDetails = { name, brandName, type, img, price, shortDescription, rating };
 
         fetch("http://localhost:5000/addProduct", {
             method: "POST",
@@ -20,12 +21,30 @@ const AddProduct = () => {
             },
             body: JSON.stringify(addProductDetails),
         })
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return res.json();
+            })
             .then((result) => {
                 console.log(result);
+                Swal.fire(
+                    'Good job!',
+                    'Product added successfully!',
+                    'success'
+                );
+            })
+            .catch((error) => {
+                console.error('Error during fetch operation:', error);
+                Swal.fire(
+                    'Oops!',
+                    'Something went wrong. Please try again!',
+                    'error'
+                );
             });
-
     };
+
 
     return (
         <div>

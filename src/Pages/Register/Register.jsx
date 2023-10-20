@@ -15,7 +15,6 @@ const Register = () => {
             .catch((error) => {
                 console.error(error);
             });
-        console.log('btn clicked')
     };
 
     return (
