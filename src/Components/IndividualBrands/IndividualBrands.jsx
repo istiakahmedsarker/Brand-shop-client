@@ -4,7 +4,7 @@ import BrandCard from "../BrandCard/BrandCard";
 const IndividualBrands = () => {
     const data = useLoaderData();
     const brandName = useParams().id;
-    console.log(brandName)
+    // console.log(brandName)
 
     // Use the filter method to find the data object that matches the brandName
     const individualBrandData = data.filter(item => item.brandName.toLowerCase() === brandName.toLowerCase());

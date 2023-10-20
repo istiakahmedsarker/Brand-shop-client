@@ -9,45 +9,53 @@ import Register from "../Pages/Register/Register";
 import IndividualBrands from "../Components/IndividualBrands/IndividualBrands"; // Make sure it's imported correctly
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
 import Login from "../Pages/Login/Login";
+import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
 
 const Router = createBrowserRouter([
     {
         path: "/",
-        element: <Root></Root>,
-        errorElement: <ErrorPage></ErrorPage>,
+        element: <Root />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
-                element: <Home></Home>,
+                element: <Home />,
                 loader: () => fetch('/data.json')
             },
             {
                 path: "/addProduct",
-                element: <AddProduct></AddProduct>,
+                element: <AddProduct />,
             },
             {
-                path: "/updateProduct",
-                element: <updateProduct></updateProduct>
+                path: "/myCart",
+                element: <UpdateProduct />,
             },
             {
                 path: "/brands/:id",
-                element: <IndividualBrands></IndividualBrands>,
-                loader: () => fetch('http://localhost:5000/allProducts')
+                element: <IndividualBrands />,
+                loader: () => fetch('http://localhost:5000/allProducts'),
+                children: [
+                    {
+                        path: "productDetails/:id",
+                        element: <ProductDetails />,
+                    },
+                ],
             },
             {
-                path: "/productDetails/:id",
-                element: <ProductDetails></ProductDetails>,
+                path: "updateProduct/:id",
+                element: <UpdateProduct />,
             },
             {
                 path: "/register",
-                element: <Register></Register>,
+                element: <Register />,
             },
             {
                 path: "/login",
-                element: <Login></Login>,
-            }
-        ]
+                element: <Login />,
+            },
+        ],
     },
 ]);
 
 export default Router;
+

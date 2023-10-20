@@ -1,6 +1,8 @@
-
+import { useParams } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const updateProduct = () => {
+    const { id } = useParams();
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -15,7 +17,25 @@ const updateProduct = () => {
 
         const addProductDetails = { name, brandName, type, img, price, shortDescription, rating }
 
+        fetch(`http://localhost:5000/updateProduct/${id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(addProductDetails),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                Swal.fire(
+                    'Good job!',
+                    'Product updated successfully!',
+                    'success'
+                );
+            });
+
     };
+
+    console.log('update', id)
     return (
         <div>
             <form onSubmit={handleSubmit} action="">
@@ -68,7 +88,7 @@ const updateProduct = () => {
                     <input type="number" name="rating" min="0" max="5" placeholder="Rating" step="any" className="input input-bordered appearance-none" required />
                 </div>
                 <div className="flex justify-center my-5">
-                    <button type="submit" className="btn btn-outline btn-secondary w-4/5 mx-auto">Add Product</button>
+                    <button type="submit" className="btn btn-outline btn-secondary w-4/5 mx-auto">Update Product</button>
                 </div>
             </form>
         </div>
