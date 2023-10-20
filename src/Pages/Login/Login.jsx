@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
-    // const { user, signIn } = useContext(AuthContext);
+    const { user, signIn } = useContext(AuthContext);
 
     const handleLogIn = (event) => {
         event.preventDefault();
