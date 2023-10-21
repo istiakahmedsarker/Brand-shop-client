@@ -14,7 +14,7 @@ const Login = () => {
     const handleLogIn = (event) => {
         event.preventDefault();
 
-        if (user && user.email === email) {
+        // if (user && user.email === email) {
             signIn(email, password)
                 .then((response) => {
                     console.log(response.user);
@@ -25,9 +25,9 @@ const Login = () => {
                     console.error(error);
                     toast.error("Incorrect password");
                 });
-        } else {
-            toast.error("Email does not match our records");
-        }
+        // } else {
+            // toast.error("Email does not match our records");
+        // }
     };
 
 

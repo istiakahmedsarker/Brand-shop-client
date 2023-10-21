@@ -7,9 +7,7 @@ const navButtons = () => {
             <li>
                 <NavLink to="/">Home</NavLink>
             </li>
-            <li>
-                <NavLink to="/updateProduct">Update Product</NavLink>
-            </li>
+
             <li>
                 <NavLink to="/addProduct">Add Product</NavLink>
             </li>

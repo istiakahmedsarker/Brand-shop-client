@@ -1,33 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import useAuth from "../../Hooks/useAuth";
 
 const ProductDetails = () => {
     const [details, setDetails] = useState([]);
-    const { id } = useParams();
+    const { id: myCartId } = useParams();
+    const { user } = useAuth()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/productDetails/${id}`)
+        fetch(`http://localhost:5000/productDetails/${myCartId}`)
             .then((res) => res.json())
             .then((data) => setDetails(data));
-    }, [id]);
+    }, [myCartId]);
 
-    const renderDetails = () => {
+    const addToCart = () => {
+        const email = user.email
+        const addedCarts = { email, myCartId: myCartId }
 
-        return details.map((detail) => (
-            <div key={detail._id}>
-                <h1>{detail.name}</h1>
-                <img src={detail.img} alt={detail.name} />
-                <p>{detail.shortDescription}</p>
-                
-                <p className="text-xl font-bold mb-4">${detail.price}</p>
-                <button onClick={()=> console.log('added to cart')} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Add to Cart</button>
-            </div>
-        ));
-    };
+        fetch("http://localhost:5000/addToCart", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(addedCarts),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                console.log(result);
+            });
+    }
 
     return (
         <div>
-            {renderDetails()}
+            {
+                details.map((detail) => (
+                    <div key={detail._id}>
+                        <div className="">
+                            <h1 className='text-5xl text-center font-semibold my-5'>{detail.name}</h1>
+                            <div className="flex justify-center">
+                                <img src={detail.img} alt={detail.name} />
+                            </div>
+                            <p className='mx-16 my-4 lg:mx-36'>{detail.shortDescription}</p>
+                        </div>
+
+                        <div className="">
+                            <p className="text-xl text-center font-bold mb-4">${detail.price}</p>
+                            <div className="flex justify-center">
+
+                                <button onClick={addToCart} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
         </div>
     );
 };
