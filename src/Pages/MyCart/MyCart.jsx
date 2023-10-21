@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from "../../Hooks/useAuth";
+import Swal from 'sweetalert2';
 
 const MyCart = () => {
     const [cardIdData, setCardIdData] = useState([]);
@@ -28,6 +29,23 @@ const MyCart = () => {
         }
     }, [cardIdData]);
 
+    const handleDelete = (_id) => {
+        fetch(`http://localhost:5000/myCart/${_id}`, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setDetails(prevDetails => prevDetails.filter(product => product._id !== _id));
+                Swal.fire(
+                    'Good job!',
+                    'Deleted from cart successfully!',
+                    'success'
+                );
+            });
+    };
+
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-4">
             {details.map((product) => (
@@ -52,7 +70,7 @@ const MyCart = () => {
                         </p>
                     </div>
                     <div className="p-6 pt-0">
-                        <button
+                        <button onClick={() => handleDelete(product._id)}
                             className="block w-full select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             type="button"
                         >

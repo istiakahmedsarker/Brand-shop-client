@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import useAuth from "../../Hooks/useAuth";
+import Swal from 'sweetalert2';
 
 const ProductDetails = () => {
     const [details, setDetails] = useState([]);
@@ -27,6 +28,11 @@ const ProductDetails = () => {
             .then((res) => res.json())
             .then((result) => {
                 console.log(result);
+                Swal.fire(
+                    'Good job!',
+                    'Added to cart successfully!',
+                    'success'
+                );
             });
     }
 
