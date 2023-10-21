@@ -9,7 +9,7 @@ const ProductDetails = () => {
     const { user } = useAuth()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/productDetails/${myCartId}`)
+        fetch(`https://foodify-server-side-ak50jpw7o-1234-fs-projects.vercel.app/productDetails/${myCartId}`)
             .then((res) => res.json())
             .then((data) => setDetails(data));
     }, [myCartId]);
@@ -18,7 +18,7 @@ const ProductDetails = () => {
         const email = user.email
         const addedCarts = { email, myCartId: myCartId }
 
-        fetch("http://localhost:5000/addToCart", {
+        fetch("https://foodify-server-side-ak50jpw7o-1234-fs-projects.vercel.app/addToCart", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -17,7 +17,7 @@ const updateProduct = () => {
 
         const addProductDetails = { name, brandName, type, img, price, shortDescription, rating }
 
-        fetch(`http://localhost:5000/updateProduct/${id}`, {
+        fetch(`https://foodify-server-side-ak50jpw7o-1234-fs-projects.vercel.app/updateProduct/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",

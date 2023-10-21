@@ -2,12 +2,12 @@ import { useLoaderData, useParams } from "react-router-dom";
 import BrandCard from "../BrandCard/BrandCard";
 
 const IndividualBrands = () => {
-    const data = useLoaderData();
-    const brandName = useParams().id;
+    const data = useLoaderData() || {};
+    const brandName = useParams()?.id;
     // console.log(brandName)
 
     // Use the filter method to find the data object that matches the brandName
-    const individualBrandData = data.filter(item => item.brandName?.toLowerCase() === brandName.toLowerCase());
+    const individualBrandData = data?.filter(item => item?.brandName?.toLowerCase() === brandName?.toLowerCase());
     return (
         <div className="">
             <div className="">

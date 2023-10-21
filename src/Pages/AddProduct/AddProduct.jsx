@@ -14,7 +14,7 @@ const AddProduct = () => {
 
         const addProductDetails = { name, brandName, type, img, price, shortDescription, rating };
 
-        fetch("http://localhost:5000/addProduct", {
+        fetch("https://foodify-server-side-ak50jpw7o-1234-fs-projects.vercel.app/addProduct", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

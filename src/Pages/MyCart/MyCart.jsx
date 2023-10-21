@@ -9,7 +9,7 @@ const MyCart = () => {
     const userEmail = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myCart/${userEmail}`)
+        fetch(`https://foodify-server-side-ak50jpw7o-1234-fs-projects.vercel.app/myCart/${userEmail}`)
             .then((res) => res.json())
             .then((data) => setCardIdData(data));
     }, [userEmail]);
@@ -17,7 +17,7 @@ const MyCart = () => {
     useEffect(() => {
         const ids = cardIdData.map(cart => cart.myCartId);
         if (ids.length > 0) {
-            fetch('http://localhost:5000/myCartDetails', {
+            fetch('https://foodify-server-side-ak50jpw7o-1234-fs-projects.vercel.app/myCartDetails', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const MyCart = () => {
     }, [cardIdData]);
 
     const handleDelete = (_id) => {
-        fetch(`http://localhost:5000/myCart/${_id}`, {
+        fetch(`https://foodify-server-side-ak50jpw7o-1234-fs-projects.vercel.app/myCart/${_id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
