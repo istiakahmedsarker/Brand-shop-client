@@ -5,6 +5,31 @@
 * Client Repository:[Client-side](https://github.com/istiakahmedsarker/Brand-shop-client)
 * Server Repository:[Server-side](https://github.com/istiakahmedsarker/Brand-shop-server)
 
+## Home Page Features:
+* Navbar with logo, Home, Add Product, My Cart, and Login.
+* Banner showcasing food and beverage brands with images.
+  
+## Add Product Page:
+* Form for users to add a food product.
+* Private/protected route.
+  
+## Brand Page:
+* Clicking on a brand redirects to a page with advertisements, food products, and relevant details.
+* Informative message for a brand with no available food products.
+* Displays detailed information of the food product.
+* Includes Add to Cart button.
+  
+## My Cart Page:
+* Users can view and delete added food products.
+  
+## Authentication:
+* Email and password-based authentication.
+* Registration and login pages.
+* Password error validation on registration.
+* Display errors on login for mismatched password and email.
+* Additional login options (e.g., Facebook, GitHub, Google).
+
+
 Features of my project:
  * Can see the products according to brands
  * Can see the details of the products
