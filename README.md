@@ -13,11 +13,6 @@
 * Form for users to add a food product.
 * Private/protected route.
   
-## Brand Page:
-* Clicking on a brand redirects to a page with advertisements, food products, and relevant details.
-* Informative message for a brand with no available food products.
-* Displays detailed information of the food product.
-* Includes Add to Cart button.
   
 ## My Cart Page:
 * Users can view and delete added food products.
