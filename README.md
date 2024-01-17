@@ -7,7 +7,7 @@
 
 ## Home Page Features:
 * Navbar with logo, Home, Add Product, My Cart, and Login.
-* Banner showcasing food and beverage brands with images.
+* Banner showcasing food and beverage brands with image.
   
 ## Add Product Page:
 * Form for users to add a food product.
